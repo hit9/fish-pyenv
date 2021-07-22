@@ -4,9 +4,9 @@ function pyenv
 
     switch "$command"
         case rehash shell command --sh
-            source (pyenv init -|psub)
+            source (pyenv init - --no-rehash | psub)
+            source (pyenv init --path| psub)
             source (pyenv "$command" $argv | psub)
-
         case \*
             command pyenv "$command" $argv
     end
